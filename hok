@@ -4,3 +4,4 @@ ls
 ll
 ls 
 pwd
+echo hello 
