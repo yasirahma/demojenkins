@@ -11,10 +11,10 @@ pipeline {
             pwd
             ls
             '''
-                echo 'test'
+            
             }
         }
-        stage('environment variable') {
+        stage('Environment Variables') {
             environment {
                 username = 'myusername'
             steps {
