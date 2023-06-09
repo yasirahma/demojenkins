@@ -1,0 +1,39 @@
+pipeline {
+    agent any
+    environment {
+        name = 'yasir'
+    }
+    stages {
+        stage('run as admin') {
+            steps {
+            sh '''
+            date
+            pwd
+            ls
+            '''
+                echo 'test'
+            }
+        }
+        stage('environment variable') {
+            environment {
+                username = 'myusername'
+            steps {
+            sh 'echo "${BUILD_ID}"'
+            sh 'echo "${name}"'
+            sh 'echo "${username}"'
+            }
+        }
+        stage('test on deploy') {
+            steps {
+                echo 'test on deploy'
+                sh 'echo "${name}"'
+                sh 'echo "${username}"'
+            }
+        }
+        stage('test on prod') {
+            steps {
+                echo 'test on prod'
+            }
+        }
+    }
+}
