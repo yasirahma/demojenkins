@@ -4,23 +4,25 @@ pipeline {
         name = 'yasir'
     }
     stages {
-        stage('run as admin') {
+        
+        stage('Run A command') {
             steps {
-            sh '''
-            date
-            pwd
-            ls
-            '''
+                sh '''
+                date
+                pwd
+                ls
+                '''
             
             }
         }
         stage('Environment Variables') {
             environment {
                 username = 'myusername'
+            }
             steps {
-            sh 'echo "${BUILD_ID}"'
-            sh 'echo "${name}"'
-            sh 'echo "${username}"'
+                sh 'echo "${BUILD_ID}"'
+                sh 'echo "${name}"'
+                sh 'echo "${username}"'
             }
         }
         stage('test on deploy') {
