@@ -1,4 +1,4 @@
-FROM Ubuntu:latest
+FROM ubuntu:latest
 MAINTAINER yasir2455@gmail.com@gmail.com
 RUN apt install -y httpd \
   zip \
