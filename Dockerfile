@@ -1,23 +1,12 @@
-# Use the latest CentOS image as the base
 FROM centos:latest
-
-RUN  sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
-RUN  sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
-RUN yum update -y
-# Install necessary packages
-RUN yum update -y && \
-    yum install -y java-17-openjdk && \
-    yum clean all
-
-
-# Set JAVA_HOME environment variable
-ENV JAVA_HOME /usr/lib/jvm/java-17-openjdk
-
-# Set PATH to include Java binaries
-ENV PATH $PATH:$JAVA_HOME/bin
-
-# Set working directory
-WORKDIR /app
-
-# Define an entry point (this can be customized based on your application)
-CMD ["java", "-version"]
+MAINTAINER sanjay.dahiya332@gmail.com
+RUN yum install -y httpd \
+  zip \
+ unzip 
+ADD https://www.free-css.com/assets/files/free-css-templates/download/page254/photogenic.zip /var/www/html/
+WORKDIR /var/www/html
+RUN unzip photogenic.zip
+RUN cp -rvf photogenic/* .
+RUN rm -rf photogenic photogenic.zip 
+CMD ["/usr/sbin/httpd", "-D",  "FOREGROUND"]
+EXPOSE 80
