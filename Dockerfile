@@ -1,5 +1,5 @@
 FROM ubuntu:latest
-MAINTAINER yasir2455@gmail.com@gmail.com
+MAINTAINER yasir2455@gmail.com
 RUN apt install -y httpd \
   zip \
  unzip 
